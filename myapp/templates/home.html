@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container" style="text-align: center;">
+
+        {% include 'navbar.html' %}
+
+        <h1>Welcome to Our Website</h1>
+        <p style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis dolorem sequi hic
+            cupiditate rem nisi aperiam, expedita asperiores reprehenderit doloribus sint neque, eius nostrum pariatur,
+            facilis fugiat! Veniam deleniti cum, repellat cupiditate amet corporis quam natus fugit, laborum accusamus
+            eaque voluptatum corrupti tenetur ipsum vitae impedit, tempore aliquam maiores perspiciatis?Lorem ipsum
+            dolor sit amet, consectetur adipisicing elit. Non voluptates sunt reiciendis corrupti quis! Excepturi animi
+            suscipit vero dolor illum ratione, eaque repellendus dignissimos. Ad, culpa fuga aut accusantium ab itaque
+            ex quisquam et libero? Repellendus doloribus minus pariatur deserunt voluptate nihil facere dolores labore
+            quam. Nemo veniam architecto temporibus?</p>
+
+        <form action="/index/" method="POST">
+            {% csrf_token %}
+            <input type="checkbox" name="check">
+            <button style="height: 50px; background-color: yellow; font-weight: bolder;">Dynamic Data</button>
+
+        </form>
+
+
+        <hr size="5" color="blue">
+
+        <!-- INclude the dynamic data -->
+        {% if isActive %}
+        <div>
+            <hr>
+            <h1>Accessing Dynamic Values</h1>
+            <br>
+            <h2>DATE {{date}}</h2>
+            <h2>Name {{name}}</h2>
+            <hr>
+            <h1>Student Data</h1>
+            <h2>Student_name {{student_data.stu_name}}</h2>
+            <h2>Student_enroll {{student_data.stu_enroll}}</h2>
+            <h2>Student_college {{student_data.stu_college}}</h2>
+            <hr size="5" color="tomato">
+            <h2 style="color: red;font-size: larger;">Favourite Fruits</h2>
+
+            {% for p in list_of_fruits %}
+
+            <h3>{{p}}</h3>
+            {% endfor %}
+
+        </div>
+
+
+        {%endif%}
+
+    </div>
+</body>
+
+</html>
